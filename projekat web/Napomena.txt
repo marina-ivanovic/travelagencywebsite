@@ -1,0 +1,6 @@
+Izmene agencija i korisnika (kao i nefunkcionalna izmena destinacija) se mogu naći na admin panelu
+(administratorska stranica, pa dropdown na željeni entitet).
+
+Kod pretrage agencija (destinacija) označavaju se samo nazivi agencija (destinacija) pri unosu teksta
+u search bar. Funkcija pretrage svakako radi i za pretraživanje destinacija kod agencija, i tipa i
+prevoza kod destinacija, samo što ti atributi nisu prikazani.

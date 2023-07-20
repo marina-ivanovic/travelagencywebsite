@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Travelverse</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="style/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500&family=Source+Sans+Pro:wght@300&display=swap" rel="stylesheet">
+</head>
+<body>
+  <header>
+    <nav id="navigacija">
+        <h1 id="naslov"><a href="index.html">Travelverse</a></h1>
+            <ul id="nav-desno">
+                <li><a href="index.html">Početna</a></li>
+                <li><a href="index.html#ag">Agencije</a></li>   
+                <li>
+                  <div class="dropdown-admin">
+                    <p onclick="openDropdown()">Administratorska stranica</p>
+                    <div class="dropdown-options" id="dropdown-admin">
+                      <a href="adminkorisnici.html">Korisnici</a>
+                      <a href="adminagencije.html">Agencije</a>
+                      <a href="admindestinacije.html">Destinacije</a>
+                    </div>
+                  </div>
+                </li>  
+                <li><a href="#" onclick="openLogin()">Log in</a></li>
+            </ul>
+            <i class="fa-solid fa-bars" id="toggle" onclick="otvoriNav()" style="color: #ffffff;"></i>
+    </nav>
+</header>
+<div class="responsive-nav" id="responsive-nav-id">
+    <ul>
+        <li><a href="index.html">Početna</a></li>
+        <li><a href="index.html#ag">Agencije</a></li>   
+        <li>
+          <div class="dropdown-responsive-admin" onclick="openDropdown2()">
+            <p>Administratorska stranica</p>
+            <div class="dropdown-options" id="dropdown-admin2">
+              <a href="adminkorisnici.html">Korisnici</a>
+              <a href="adminagencije.html">Agencije</a>
+              <a href="admindestinacije.html">Destinacije</a>
+            </div>
+          </div>
+        </li>  
+        <li><a href="#" onclick="openLogin()">Log in</a></li>
+    </ul>
+</div>
+<div class="glavni-agencija" id="glavni-agencija"></div>
+</div>
+<h1 id="destinacije-podnaslov">Galerija</h1>
+    <div class="slajdovi" id="slajdovi">
+        <a class="prev" onclick="promeniSlajd(-1)">&#10094;</a>
+        <div class="galerija" id="galerija"></div>
+        <a class="next" onclick="promeniSlajd(1)">&#10095;</a>
+    </div>
+
+    </div>
+    <div class="form-popup" id="loginForma">
+      <form class="form-container">
+        <h1>Login</h1>
+    
+        <label for="usernameLogin"><b>Korisnicko ime</b></label>
+        <input type="text" placeholder="Unesite korisnicko ime" id="usernameLogin" name="usernameLogin" >
+        <div id="userValLogin" style="color: red; display: none;">Ne postoji korisnik sa datim korisnickim imenom</div>
+
+        <label for="passwordLogin"><b>Lozinka</b></label>
+        <input type="password" placeholder="Unesite lozinku" id="passwordLogin" name="password" >
+        <div id="passValLogin" style="color: red; display: none;">Uneli ste pogresnu lozinku</div>
+
+    
+        <button type="submit" class="btn">Login</button>
+        <button type="button" class="btn cancel" onclick="closeLogin()">Zatvori</button>
+        <p>Nemate nalog? Registrujte se <a href="#" onclick="openReg()">ovde</a>.</p>
+      </form>
+    </div>
+    <div class="form-popup" id="registracijaForma">
+      <form class="form-container">
+        <h1>Registracija</h1>
+        <label for="username"><b>Korisnicko ime</b></label>
+        <input type="text" placeholder="Unesite korisnicko ime" name="korisnickoIme" id="username" >
+        <div id="userVal" style="color: red; display: none;">Niste uneli validno korisnicko ime</div>
+        <div id="userValIsti" style="color: red; display: none;">Korisnicko ime je zauzeto</div>
+
+        <label for="email"><b>Email</b></label>
+        <input type="text" placeholder="Unesite email" name="email" id="email" >
+        <div id="emailVal" style="color: red; display: none;">Niste uneli validan email</div>
+
+        <label for="password"><b>Lozinka</b></label>
+        <input type="password" placeholder="Unesite lozinku" name="password" id="password" >
+        <div id="passVal" style="color: red; display: none;">Niste uneli validnu lozinku</div>
+
+        <label for="ime"><b>Ime</b></label>
+        <input type="text" placeholder="Unesite ime" name="ime" id="ime" >
+        <div id="imeVal" style="color: red; display: none;">Niste uneli validno ime</div>
+
+        <label for="prezime"><b>Prezime</b></label>
+        <input type="text" placeholder="Unesite prezime" name="prezime" id="prezime" >
+        <div id="prezimeVal" style="color: red; display: none;">Niste uneli validno prezime</div>
+
+        <label for="datum"><b>Datum rodjenja</b></label>
+        <input type="text" placeholder="yyyy-mm-dd" name="datum" id="datum" >
+        <div id="datumVal" style="color: red; display: none;">Niste uneli validan datum rodjenja</div>
+
+        <b>Adresa</b>
+          <div id="registracija-adresa">
+            <label for="ulica" class="hidden"></label>
+            <input type="text" placeholder="Ulica i broj" name="ulica" id="ulica" >
+            <label for="mesto" class="hidden"></label>
+            <input type="text" placeholder="Mesto/grad" name="mesto" id="mesto" >
+            <label for="postanski" class="hidden"></label>
+            <input type="number" placeholder="Poštanski broj" name="postanskiBroj" id="postanski" >
+          </div>
+          <div id="adresaVal" style="color: red; display: none;">Niste uneli validnu adresu</div>
+        <label for="brTel"><b>Broj telefona</b></label>
+        <input type="text" placeholder="0651112233" name="telefon" id="brTel">
+        <div id="telVal" style="color: red; display: none;">Niste uneli validan broj telefona</div>
+        <button type="submit" class="btn" id="regBtn">Registrujte se</button>
+        <button type="button" class="btn cancel" onclick="closeReg()">Zatvori</button>
+
+      </form>
+    </div>
+    <div class="form-popup" id="uspesnaReg">
+      <form class="form-container">
+        <h1>Uspesno ste se registrovali.</h1>
+        <button type="button" class="btn cancel" onclick="closeUspesno()">Zatvori</button>
+      </form>
+    </div>
+    <div class="form-popup" id="uspesanLogin">
+      <form class="form-container">
+        <h1>Uspesno ste se prijavili.</h1>
+        <button type="button" class="btn cancel" onclick="closeUspesanLogin()">Zatvori</button>
+      </form>
+    </div>
+      <footer>
+          <p class="footer-links">
+            <a href="index.html">Početna stranica</a>
+  
+            <a href="index.html#ag">Agencije</a>
+  
+            <a href="#">Kontakt</a>
+          </p>
+          <br>
+          <p>Marina Ivanović, SV6/2022</p>
+          <p>Web Dizajn 2023</p>
+      </footer>
+</body>
+<script src="js/destinacija.js"></script>
+</html>
